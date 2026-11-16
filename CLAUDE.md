@@ -36,7 +36,7 @@ function s1(u){ ... }      // u = segundos desde el inicio de la escena
 const SC=[[0,3.4,s1],[3.4,9.2,s2], ...];   // [inicio, fin, función] en segundos — OBLIGATORIO, al final
 ```
 
-**Nombres ya usados por el motor** (no redeclarar con `const`/`let` en un episodio): `W`, `H`, `T`, `E`, `M`, `PX`, `BX`, `CZ`, `HS`, `CAM` no, pero sí `cam`, `scene`, `pip`, `bolt`, `prop`, `gear`, `bulb`, `clouds`, `rainbow`, `env`, `sun`, `seed`, `rnd`, `OV`, `PE`, `CONF`, `YEL`. Un nombre repetido rompe toda la página (sale `ERR: Identifier ... has already been declared` en los stills).
+**Nombres ya usados por el motor** (no redeclarar con `const`/`let` en un episodio): `W`, `H`, `T`, `E`, `M`, `PX`, `BX`, `CZ`, `HS`, `cam`, `scene`, `pip`, `bolt`, `prop`, `gear`, `bulb`, `clouds`, `rainbow`, `env`, `sun`, `seed`, `rnd`, `OV`, `PE`, `CONF`, `YEL`. Un nombre repetido rompe toda la página (sale `ERR: Identifier ... has already been declared` en los stills).
 
 Plano medio recomendado para que los dos quepan bien en vertical: `LPX=-.8, LBX=.8` y `camSet([0,1.8,10.3],[0,1.15,CZ])` (ver `episodes/2026-11-16_*`).
 
