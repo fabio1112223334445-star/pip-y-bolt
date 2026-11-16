@@ -1,0 +1,16 @@
+// ---------- timeline ----------
+let T=0;
+const HS=40; // sky altitude
+function camSet(p,l,fov=38){cam.position.set(...p);cam.fov=fov;cam.updateProjectionMatrix();cam.lookAt(...l)}
+function spin(u,keys){let a=0;const st=1/240;for(let x=0;x<u;x+=st)a+=kf(x,keys)*st;return a}
+function propOnMast(angle,speed){place(prop.g,M.mast);prop.g.position.set(0,0,0);prop.g.rotation.set(0,0,0);prop.g.scale.setScalar(1);prop.r.rotation.y=angle;prop.blur.material.opacity=clamp((speed-12)/30)*.42;prop.r.visible=true}
+function propFree(p,r,s=1){place(prop.g,scene);prop.g.position.set(...p);prop.g.rotation.set(...r);prop.g.scale.setScalar(s);prop.blur.material.opacity=0}
+function propHat(a){place(prop.g,bolt.hat);prop.g.position.set(0,.02,0);prop.g.rotation.set(0,0,.12);prop.g.scale.setScalar(.8);prop.r.rotation.y=a;prop.blur.material.opacity=0}
+function gearSlot(wig=0){place(gear,M.slot);gear.position.set(0,0,.06);gear.rotation.set(0,0,wig);gear.scale.setScalar(1)}
+function gearCrown(){place(gear,pip.crown);gear.position.set(0,0,0);gear.rotation.set(0,0,0);gear.scale.setScalar(1)}
+function gearFree(p,r,s=1){place(gear,scene);gear.position.set(...p);gear.rotation.set(...r);gear.scale.setScalar(s)}
+function machine(o){o=Object.assign({x:0,y:0,z:-1,rz:0,rx:0,sy:1,bal:0,glow:0},o);M.g.position.set(o.x,o.y,o.z);M.b.rotation.set(o.rx,0,o.rz);M.b.scale.set(1/Math.sqrt(o.sy),o.sy,1/Math.sqrt(o.sy));M.ringM.emissiveIntensity=o.glow}
+function balloons(f){M.bal.forEach((b,i)=>{const s=f(i);b.bg.visible=s>0;b.ball.scale.setScalar(s);b.ball.position.set(b.p.x+Math.sin(T*2+i)*.06,b.p.y+Math.sin(T*2.6+i*2)*.05,b.p.z)})}
+const seatPip=o=>{place(pip.g,M.sl);setPip(pip,Object.assign({s:1},o))},seatBolt=o=>{place(bolt.g,M.sr);setBolt(bolt,o)};
+const PX=-.95,BX=.95,CZ=1.8;
+

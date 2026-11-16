@@ -1,0 +1,9 @@
+window.SCENES=SC.map(s=>[s[0],s[1]]);
+window.renderAt=function(t){T=t;bulb.visible=false;M.ringM.emissiveIntensity=0;
+ for(const s of SC)if(t>=s[0]&&t<s[1]){s[2](t-s[0]);break}
+ for(const c of clouds){const d=c.userData;c.position.set(((d.x+d.v*t+40)%80)-40,d.y,d.z)}
+ const cy=cam.position.y;document.body.style.background=cy>20?'linear-gradient(#1f7dff 0%,#58b4ff 50%,#c8ecff 100%)':'linear-gradient(#2f8fff 0%,#6fc0ff 45%,#d6f3ff 100%)';
+ const fy=cy>12?cy-3:0;sun.position.set(5,fy+11,8);sun.target.position.set(0,fy,0);sun.target.updateMatrixWorld();
+ drawParticles();drawOv();renderer.render(scene,cam);return true};
+document.fonts.load('700 100px Fredoka').then(()=>{window.READY=true});
+</script></body></html>
